@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "nodemon": "nodemon index.js",
-    "start": "node index.js"
+    "build": "rimraf ./build && tsc",
+    "start": "npm run build && node build/index.js"
   },
   "keywords": [],
   "author": "DeltaQuery",
@@ -17,5 +18,8 @@
     "graphql": "^16.5.0",
     "mongoose": "^6.4.4",
     "nodemon": "^2.0.19"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2"
   }
 }
