@@ -2,7 +2,7 @@ import mongoose from "mongoose"
 import dotenv from 'dotenv'
 dotenv.config()
 
-const MONGODB_URI = `mongodb+srv://marateca:${process.env.PASSWORD}@cluster0.cvga0iw.mongodb.net/?retryWrites=true&w=majority`
+const MONGODB_URI = `mongodb+srv://marateca:marateca2022@cluster0.cvga0iw.mongodb.net/?retryWrites=true&w=majority`
 
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
