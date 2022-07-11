@@ -1,6 +1,9 @@
 import { ApolloServer, gql } from 'apollo-server'
 import "./db.js"
 import product from './models/product.js'
+import { ApolloServerPluginLandingPageLocalDefault,
+    ApolloServerPluginLandingPageProductionDefault
+} from "apollo-server-core"
 
 const typeDefs = gql`
 
@@ -57,7 +60,13 @@ const resolvers = {
 
 const server = new ApolloServer({
     typeDefs,  
-    resolvers
+    resolvers,
+    plugins: [
+        // Install a landing page plugin based on NODE_ENV
+        process.env.NODE_ENV === 'production'
+          ? ApolloServerPluginLandingPageLocalDefault({ footer: false })
+          : ApolloServerPluginLandingPageLocalDefault({ footer: false }),
+      ]
 })
 
 server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
